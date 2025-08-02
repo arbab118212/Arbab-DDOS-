@@ -6,7 +6,6 @@ from urllib.parse import urlparse
 from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Prompt
-from rich.text import Text
 from rich.align import Align
 from datetime import datetime
 import pyfiglet
@@ -28,15 +27,15 @@ def show_banner(text, style):
 def dht_intro():
     clear()
     show_banner("Rocky-HACKERS", "bold red")
-    console.pri(Panel.fit(
-        "[green]This tool is for [bold]educational & testing[/bold] use only.\n
+    console.print(Panel.fit(
+        "[green]This tool is for [bold]educational & testing[/bold] use only.",
         title="[bold magenta]Rocky Hackers Official Tool[/bold magenta]",
         border_style="bright_magenta",
         padding=(1, 2)
     ))
     time.sleep(2)
     if os.name == "posix":
-        os.system("termux-open-url ")
+        os.system("termux-open-url https://youtube.com/@dht-hackers_10")
     Prompt.ask("[yellow]Press Enter after subscribing to continue...[/yellow]")
     clear()
 
@@ -133,5 +132,4 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        console.print("\n[red]⛔ Interrupted[/red]")
-        sys.exit()
+        console.print("\n[red]⛔ Interrupted[/red
