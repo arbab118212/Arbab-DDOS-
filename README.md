@@ -38,7 +38,7 @@ apt update && apt upgrade
 pkg install python
 pkg install git
 pip install pyfiglet
-git clone https://github.com/Rocky-AI-code/Arbab-DDOS.git
+git clone https://github.com/arbab118212/Arbab-DDOS.git
 cd Arbab-DDOS
 
 
