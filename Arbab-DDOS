@@ -36,7 +36,7 @@ def dht_intro():
     ))
     time.sleep(2)
     if os.name == "posix":
-        os.system("termux-open-url https://youtube.com/@dht-hackers_10")
+        os.system("termux-open-url:https://youtube.com/@rocky-ai69?si=cK-qmx6HPYQ6Vb5i")
     Prompt.ask("[yellow]Press Enter after subscribing to continue...[/yellow]")
     clear()
 
